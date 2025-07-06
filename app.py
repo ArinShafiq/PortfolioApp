@@ -27,7 +27,7 @@ def homepage():
 
         msg = Message(subject=msg_subject,
                       sender=sender_email,
-                      recipients=['shafiqshahrin73@gmail.com'],
+                      recipients=['receiver-email'],
                       body=f"Name: {name}\nEmail: {sender_email}\nPhone: {phone_number}\n\nMessage:\n{message}")
 
         mail.send(msg)
