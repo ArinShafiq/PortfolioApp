@@ -1,3 +1,4 @@
+import requests
 from flask import Flask, render_template, request, redirect, flash, send_from_directory
 from flask_mail import Mail, Message
 
@@ -8,10 +9,25 @@ app.secret_key = '86b671517fe72e222216f30d17955b7a617959814ea34fb8ab0f10cbb14427
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'your-email'
+app.config['MAIL_USERNAME'] = 'your-sender-email'
 app.config['MAIL_PASSWORD'] = 'your-app-password' 
 
 mail = Mail(app)
+
+RECAPTCHA_SECRET_KEY = 'your-recaptcha-secret-key'
+
+#Verify recaptcha
+def verify_recaptcha(token):
+    response = requests.post(
+        "https://www.google.com/recaptcha/api/siteverify",
+        data={
+            'secret': RECAPTCHA_SECRET_KEY,
+            'response': token
+        }
+    )
+    result = response.json()
+    print("reCAPTCHA result:", result)  # For debugging
+    return result.get('success', False) and result.get('score', 0) >= 0.5
 
 #App route
 @app.route('/', methods=['GET', 'POST'])
@@ -19,6 +35,11 @@ def homepage():
     
     #To send contact message to my email
     if request.method == 'POST':
+        token = request.form.get('g-recaptcha-response')
+        if not token or not verify_recaptcha(token):
+            flash("reCAPTCHA failed. Try again.", "danger")
+            return redirect("/")
+            
         name = request.form['name']
         sender_email = request.form['email']
         phone_number = request.form['phone']
@@ -27,7 +48,7 @@ def homepage():
 
         msg = Message(subject=msg_subject,
                       sender=sender_email,
-                      recipients=['receiver-email'],
+                      recipients=['recipient-email'],
                       body=f"Name: {name}\nEmail: {sender_email}\nPhone: {phone_number}\n\nMessage:\n{message}")
 
         mail.send(msg)
