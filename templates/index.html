@@ -15,7 +15,7 @@
     />
     <!--CSS-->
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcLZHorAAAAADs0cQFj4f_SWqDOJhW384zviT3S"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </head>
   <body>
     <!--header-->
@@ -370,27 +370,13 @@
                 id="g-recaptcha-response"
               />
             </div>
-
-            <button
-              class="btn g-recaptcha"
-              data-sitekey="6LcLZHorAAAAADs0cQFj4f_SWqDOJhW384zviT3S"
-              data-callback="onSubmit"
-              data-action="submit"
-            >
-              Send Message
-            </button>
+            <div class="g-recaptcha" data-sitekey="6Le-zXorAAAAANrOi56Oc62EmkpUiwFkdMWNRIMS"></div>
+            <button class="btn" type="submit">Send Message</button>
           </form>
         </div>
       </div>
     </section>
     <!--Javascript-->
     <script src="{{url_for('static', filename='script.js')}}"></script>
-
-    <script>
-      // Captcha
-      function onSubmit(token) {
-        document.getElementById("contact-form").submit();
-      }
-    </script>
   </body>
 </html>
