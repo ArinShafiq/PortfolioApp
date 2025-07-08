@@ -94,6 +94,10 @@ section.active {
   animation-delay: 0.5s;
 }
 
+section.active::-webkit-scrollbar {
+  display: none;              /* Chrome, Safari, Edge */
+}
+
 @keyframes show-content {
   100% {
     visibility: visible;
