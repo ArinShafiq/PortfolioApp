@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Portfolio</title>
+    <!--boxicons-->
+    <link
+      href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css"
+      rel="stylesheet"
+    />
+    <!--CSS-->
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
+  </head>
+  <body>
+    <!--header-->
+    <header class="active">
+      <a href="#" class="logo">Shafiq.</a>
+
+      <i class="bx bx-menu" id="menu-icon"></i>
+
+      <nav>
+        <a href="/">Home</a>
+        <a href="/Resume">Resume</a>
+        <a href="#" class="active">Portfolio</a>
+        <a href="/Contact">Contact</a>
+      </nav>
+    </header>
+
+    <!--Portfolio Section-->
+    <section class="portfolio active">
+      <h2 class="heading">Latest <span>Project</span></h2>
+      <div class="portfolio-container">
+        <div class="portfolio-box">
+          <div class="portfolio-detail active">
+            <p class="numb">01</p>
+            <h3>Risk Assessment Manager</h3>
+            <p>
+              A security Risk Management web app that was made by me along with
+              my friend Diego and Irsyad for Security Risk Management Subject. A
+              simple SRM app with simple UI. Capable of assessing risk,
+              comparing risk and manage asset risk entries. Also have UI
+              features such as dark and light mode!
+            </p>
+            <div class="tech">
+              <p>HTML, CSS, PHP, PostgreSQL</p>
+            </div>
+            <div class="live-github">
+              <a
+                class="active"
+                href="https://github.com/ArinShafiq/Mini-Project-Risk-Management"
+                ><i class="bxl bx-github"></i><span>Github Repository</span></a
+              >
+            </div>
+          </div>
+
+          <div class="portfolio-detail">
+            <p class="numb">02</p>
+            <h3>Simple Class Management App</h3>
+            <p>
+              A Class management app I and my friend Diego made for Data
+              Structure and Algorithm subject. Without relying on database, I
+              was able to make a web app that use data structure such as dynamic
+              array, merge sort, tree, etc.
+            </p>
+            <div class="tech">
+              <p>HTML, CSS, JavaScript</p>
+            </div>
+            <div class="live-github">
+              <a
+                href="https://github.com/ArinShafiq/DSA-Application"
+                class="active"
+                ><i class="bxl bx-github"></i><span>Github Repository</span></a
+              >
+            </div>
+          </div>
+
+          <div class="portfolio-detail">
+            <p class="numb">03</p>
+            <h3>Library Seat Checker</h3>
+            <p>
+              A web application made in collaboration with my friend Christian
+              and Diego for Software Engineering subject. The concept of this
+              app is one of the method to solve the problem President University
+              Library have where it can get overcrowded ever since the lockers
+              are gone. While never actually be used in practice, its still a
+              neat idea.
+            </p>
+            <div class="tech">
+              <p>PHP, HTML, CSS, Composer, Tailwind</p>
+            </div>
+            <div class="live-github">
+              <a
+                href="https://github.com/chris001002/LibrarySeatChecker"
+                class="active"
+                ><i class="bxl bx-github"></i><span>Github Repository</span></a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-box">
+          <!--Images Carousel-->
+          <div class="portfolio-carousel">
+            <div class="img-slide">
+              <div class="img-item">
+                <img
+                  src="{{url_for('static', filename='images/portfolio1.png')}}"
+                />
+              </div>
+              <div class="img-item">
+                <img
+                  src="{{url_for('static', filename='images/portfolio2.png')}}"
+                />
+              </div>
+              <div class="img-item">
+                <img
+                  src="{{url_for('static', filename='images/portfolio3.png')}}"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="navigation">
+            <button class="arrow-left disabled">
+              <i class="bx bx-chevron-left"></i>
+            </button>
+            <button class="arrow-right">
+              <i class="bx bx-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Javascript-->
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Portfolio</title>
+    <!--boxicons-->
+    <link
+      href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css"
+      rel="stylesheet"
+    />
+    <!--CSS-->
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body>
+    <!--header-->
+    <header class="active">
+      <a href="#" class="logo">Shafiq.</a>
+
+      <i class="bx bx-menu" id="menu-icon"></i>
+
+      <nav>
+        <a href="/">Home</a>
+        <a href="/Resume">Resume</a>
+        <a href="/Portfolio">Portfolio</a>
+        <a href="#" class="active">Contact</a>
+      </nav>
+    </header>
+
+    <!--Contact Section-->
+    <section class="contact active">
+      <div class="contact-container">
+        <div class="contact-box">
+          <h2>Let's Work Together</h2>
+          <p class="desc">
+            Please contact me through this form, you can ask me questions or
+            invite me to work together on projects.
+          </p>
+          <div class="contact-detail">
+            <i class="bx bx-envelope"></i>
+            <div class="detail">
+              <p>Email</p>
+              <p>shafiqshahrin73@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <i class="bx bx-location"></i>
+            <div class="detail">
+              <p>Address</p>
+              <p>Cilangkap, Jakarta Timur</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-box">
+          <form action="/Contact" method="POST" id="contact-form">
+            <h2 class="heading">Contact <span>Me!</span></h2>
+            <div class="field-box">
+              <input type="text" placeholder="Full Name" required name="name" />
+              <input
+                type="email"
+                placeholder="Email Address"
+                required
+                name="email"
+              />
+              <input
+                type="text"
+                placeholder="Phone Number"
+                required
+                name="phone"
+              />
+              <input
+                type="text"
+                placeholder="Email Subject"
+                required
+                name="subject"
+              />
+              <textarea
+                name="message"
+                placeholder="Your Message"
+                required
+              ></textarea>
+              <input
+                type="hidden"
+                name="g-recaptcha-response"
+                id="g-recaptcha-response"
+              />
+            </div>
+            <div
+              class="g-recaptcha"
+              data-sitekey="6Le-zXorAAAAANrOi56Oc62EmkpUiwFkdMWNRIMS"
+            ></div>
+            <button class="btn" type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!--Javascript-->
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+  </body>
+</html>

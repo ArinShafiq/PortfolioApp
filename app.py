@@ -9,7 +9,7 @@ app.secret_key = '86b671517fe72e222216f30d17955b7a617959814ea34fb8ab0f10cbb14427
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'your-email'
+app.config['MAIL_USERNAME'] = 'your-sender-email'
 app.config['MAIL_PASSWORD'] = 'your-app-password' 
 
 mail = Mail(app)
@@ -30,15 +30,26 @@ def verify_recaptcha(token):
     return result.get('success', False)
 
 #App route
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def homepage():
-    
-    #To send contact message to my email
+    return render_template('index.html')
+
+@app.route('/Resume')
+def resumePage():
+    return render_template('resume.html')
+
+@app.route('/Portfolio')
+def PortfolioPage():
+    return render_template('portfolio.html')
+
+@app.route('/Contact', methods=['GET', 'POST'])
+def ContactPage():
+     #To send contact message to my email
     if request.method == 'POST':
         token = request.form.get('g-recaptcha-response')
         if not token or not verify_recaptcha(token):
             flash("reCAPTCHA failed. Try again.", "danger")
-            return redirect("/")
+            return redirect("/Contact")
             
         name = request.form['name']
         sender_email = request.form['email']
@@ -48,14 +59,14 @@ def homepage():
 
         msg = Message(subject=msg_subject,
                       sender=sender_email,
-                      recipients=['your-email-receiver'],
+                      recipients=['your-receiver-email'],
                       body=f"Name: {name}\nEmail: {sender_email}\nPhone: {phone_number}\n\nMessage:\n{message}")
 
         mail.send(msg)
         flash('Message sent successfully!', 'success')
-        return redirect('/')
+        return redirect('/Contact')
     
-    return render_template('index.html')
+    return render_template('contact.html')
 
 #for download
 @app.route('/download/<filename>')
