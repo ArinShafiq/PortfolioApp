@@ -14,5 +14,11 @@
 5. Run the command ```pip install -r requirements.txt```
 6. Afterwards you can run ```python app.py```
 7. Access the web app with your browser via localhost or 127.0.0.1:5000
+
+## Setup Captcha
+1. Go to https://www.google.com/recaptcha/admin
+2. Press the + button on the page to create new recaptcha
+3. Insert the required data such as labels, domain names and type of reCaptcha. IMPORTANT: Choose reCaptcha V2.
+4. Submit the form and you will then be given sitekey and secret key
  
 
