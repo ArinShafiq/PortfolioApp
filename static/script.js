@@ -1,3 +1,13 @@
+//For Mobile Navbar
+const menuIcon = document.getElementById('menu-icon');
+const navbar = document.querySelector('header nav');
+
+menuIcon.addEventListener('click', () => {
+  menuIcon.classList.toggle('bx-x');
+  navbar.classList.toggle('active');
+});
+
+
 //For Resume buttons
 const resumeBtns = document.querySelectorAll(".resume-btn");
 
